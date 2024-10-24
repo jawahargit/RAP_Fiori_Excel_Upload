@@ -1,0 +1,134 @@
+@AccessControl.authorizationCheck: #NOT_REQUIRED
+@EndUserText.label: 'Projection view Customing table'
+@Metadata.ignorePropagatedAnnotations: true
+
+@UI: {
+ headerInfo: { typeName: 'DTAN Custom Data', typeNamePlural: 'DTAN Customizing Data' }
+ }
+define root view entity z_c_tax_custom
+  provider contract transactional_query
+  as projection on z_I_tax_custom
+{
+
+      @UI.facet: [{ id: 'CustomizingData',
+
+                    purpose: #STANDARD,
+
+                    type: #IDENTIFICATION_REFERENCE,
+
+                    label: 'Customizing Data',
+
+                    position: 10
+
+                  },{
+
+                    id:'log',position:20,
+
+                    type: #FIELDGROUP_REFERENCE,
+
+                    targetQualifier: 'ChangeLog',
+
+                    label:'Change Log'
+
+                  }]
+
+      @UI: {
+                lineItem: [ { position: 10, importance: #HIGH } ] ,
+                selectionField: [ { position: 10 }] , identification: [ { position: 10} ]
+                }
+      @Search.defaultSearchElement: true
+      @EndUserText.label: 'Tax Object'
+  key tax_object       as Taxobject,
+
+      @UI: {
+            lineItem:       [ { position: 30, importance: #HIGH } ] ,
+             selectionField: [ { position: 20 }],  identification: [ { position: 20} ] }
+      @EndUserText.label: 'Fiscal year'
+      @Search.defaultSearchElement: true
+      gjahr            as GJAHR,
+
+      @UI: {
+            lineItem:       [ { position: 40, importance: #HIGH } ] ,
+             selectionField: [ { position: 30 }],  identification: [ { position: 30} ] }
+      @EndUserText.label: 'FI Account'
+      @Search.defaultSearchElement: true
+      fi_acc_rfa       as FIACCRFA,
+
+      @UI: {
+            lineItem:       [ { position: 50, importance: #HIGH } ] ,
+             identification: [ { position: 40} ] }
+      @EndUserText.label: 'Tax Country'
+      taxcountry       as TaxCountry,
+
+      @UI: {
+            lineItem:       [ { position: 60, importance: #HIGH } ]  ,
+            identification: [ { position: 50} ] }
+      @EndUserText.label: 'Legal Entity'
+      legal_ent_id     as LegalEntid,
+
+      @UI: {
+            lineItem:       [ { position: 70, importance: #HIGH } ]  ,
+            identification: [ { position: 60} ] }
+      @EndUserText.label: 'Company Code'
+      bukrs            as Bukrs,
+
+      @UI: {
+            lineItem:       [ { position: 80, importance: #HIGH } ]  ,
+            identification: [ { position: 70} ] }
+      @EndUserText.label: 'Input Parameter1'
+      input_parameter1 as InputParameter1,
+
+      @UI: {
+           lineItem:       [ { position: 90, importance: #HIGH } ] ,
+           identification: [ { position: 80} ]  }
+      @EndUserText.label: 'Input Parameter2'
+      input_parameter2 as InputParameter2,
+
+      @UI: {
+            lineItem:       [ { position: 100, importance: #HIGH } ] ,
+            identification: [ { position: 90} ]  }
+      @EndUserText.label: 'Counter'
+      counter          as Counter,
+
+
+      @UI: {
+            lineItem:       [ { position: 110, importance: #HIGH } ] ,
+            identification: [ { position: 100} ]  }
+      @EndUserText.label: 'Source'
+      source           as Source,
+
+      @UI: {
+            lineItem:       [ { position: 120, importance: #HIGH } ] ,
+            identification: [ { position: 110} ]  }
+      @EndUserText.label: 'Trading Partner'
+      trading_partner  as TradingPartner,
+
+      @UI: {
+           lineItem:       [ { position: 130, importance: #HIGH } ] ,
+           identification: [ { position: 120} ]  }
+      @EndUserText.label: 'Prefix'
+      prefix           as Prefix,
+
+      @UI.fieldGroup: [{ qualifier: 'ChangeLog', position: 10 }]
+      @EndUserText.label: 'Created By'
+      CreatedBy,
+
+      @UI.fieldGroup: [{ qualifier: 'ChangeLog', position: 20 }]
+      @EndUserText.label: 'Created At'
+      CreatedAt,
+
+      @UI.fieldGroup: [{ qualifier: 'ChangeLog', position: 30 }]
+      @EndUserText.label: 'Changed By'
+      LastChangedBy,
+
+      @UI.fieldGroup: [{ qualifier: 'ChangeLog', position: 40 }]
+      @EndUserText.label: 'Changed At'
+      LastChangedAt,
+
+
+      @UI.hidden: true
+
+      ExcelRowNumber
+
+
+}
