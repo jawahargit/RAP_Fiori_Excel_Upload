@@ -1,0 +1,33 @@
+@AccessControl.authorizationCheck: #NOT_REQUIRED
+@EndUserText.label: 'Root entity for Customizing table data'
+@Metadata.ignorePropagatedAnnotations: true
+define root view entity z_I_tax_custom 
+as select from ztax_custom_tabl
+{
+
+  key tax_object,
+      gjahr,
+      fi_acc_rfa,
+      taxcountry,
+      legal_ent_id,
+      bukrs,
+      input_parameter1,
+      input_parameter2,
+      counter,
+      source,
+      trading_partner,
+      prefix,
+      @Semantics.user.createdBy: true
+      @EndUserText.label: 'Created By'
+      created_by      as CreatedBy,
+      @Semantics.systemDateTime.createdAt: true
+      @EndUserText.label: 'Created At'
+      created_at      as CreatedAt,
+      @Semantics.user.lastChangedBy: true
+      @EndUserText.label: 'Last Changed By'
+      last_changed_by as LastChangedBy,
+      @Semantics.systemDateTime.lastChangedAt: true
+      @EndUserText.label: 'Last Changed At'
+      last_changed_at as LastChangedAt,
+      0               as ExcelRowNumber
+}
