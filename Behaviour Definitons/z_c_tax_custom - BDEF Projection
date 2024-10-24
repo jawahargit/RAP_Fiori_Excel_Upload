@@ -1,0 +1,9 @@
+projection;
+strict ( 2 );
+
+define behavior for z_c_tax_custom alias customzing
+{
+  use create;
+  use update;
+  use delete;
+}
