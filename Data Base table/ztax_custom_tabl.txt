@@ -1,0 +1,26 @@
+@EndUserText.label : 'Tax Custom table'
+@AbapCatalog.enhancement.category : #NOT_EXTENSIBLE
+@AbapCatalog.tableCategory : #TRANSPARENT
+@AbapCatalog.deliveryClass : #A
+@AbapCatalog.dataMaintenance : #RESTRICTED
+define table ztax_custom_tabl {
+
+  key client       : abap.clnt not null;
+  key tax_object   : abap.char(100) not null;
+  gjahr            : abap.numc(4);
+  fi_acc_rfa       : abap.char(150);
+  taxcountry       : abap.char(3);
+  legal_ent_id     : abap.char(6);
+  bukrs            : abap.char(4);
+  input_parameter1 : abap.char(20);
+  input_parameter2 : abap.char(20);
+  counter          : abap.numc(2);
+  source           : abap.char(40);
+  trading_partner  : abap.char(20);
+  prefix           : abap.char(6);
+  created_by       : syuname;
+  created_at       : timestampl;
+  last_changed_by  : syuname;
+  last_changed_at  : timestampl;
+
+}
