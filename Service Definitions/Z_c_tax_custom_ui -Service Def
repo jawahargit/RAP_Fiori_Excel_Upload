@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service Definition for Customizing data'
+define service Z_c_tax_custom_ui {
+  expose z_c_tax_custom as customizing;
+}
