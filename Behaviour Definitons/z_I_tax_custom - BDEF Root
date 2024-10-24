@@ -1,0 +1,34 @@
+managed implementation in class zbp_i_tax_custom unique;
+strict ( 2 );
+
+define behavior for z_I_tax_custom alias customzing
+persistent table ztax_custom_tabl
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+  field ( readonly ) CreatedBy, CreatedAt, LastChangedBy, LastChangedAt;
+  validation validateyear on save { create;field gjahr;}
+  mapping for ztax_custom_tabl
+    {
+      tax_object       = tax_object;
+      gjahr            = gjahr;
+      fi_acc_rfa       = fi_acc_rfa;
+      taxcountry       = taxcountry;
+      legal_ent_id     = legal_ent_id;
+      bukrs            = bukrs;
+      input_parameter1 = input_parameter1;
+      input_parameter2 = input_parameter2;
+      counter          = counter;
+      source           = source;
+      trading_partner  = trading_partner;
+      prefix           = prefix;
+      CreatedAt        = created_at;
+      CreatedBy        = created_by;
+      LastChangedBy    = last_changed_by;
+      LastChangedAt    = last_changed_at;
+    }
+}
